@@ -1,0 +1,13 @@
+{
+  "name": "switch-desktop",
+  "version": "1.0.0",
+  "description": "Preview/Program Switcher für macOS und Windows",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "lint:js": "node --check main.js && node --check preload.js && node --check app.js"
+  },
+  "devDependencies": {
+    "electron": "^31.7.7"
+  }
+}
