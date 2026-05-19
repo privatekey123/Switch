@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switch Program Output</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+  <video id="programOut" autoplay playsinline muted></video>
+  <script>
+    const programOut = document.getElementById('programOut');
+
+    async function streamFromSourceId(sourceId) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: false,
+          video: {
+            mandatory: {
+              chromeMediaSource: 'desktop',
+              chromeMediaSourceId: sourceId,
+              minWidth: 1280,
+              minHeight: 720,
+              maxWidth: 7680,
+              maxHeight: 4320
+            }
+          }
+        });
+        programOut.srcObject = stream;
+      } catch (error) {
+        console.error('Program stream failed', error);
+      }
+    }
+
+    window.switchApi.onProgramApplyStream((sourceId) => {
+      streamFromSourceId(sourceId);
+    });
+  </script>
+</body>
+</html>

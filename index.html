@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switch Desktop – Preview & Program</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Switch Desktop</h1>
+    <p>macOS/Windows App: alle Fenster/Bildschirme wählen, Preview prüfen, dann auf Program schalten.</p>
+  </header>
+
+  <main>
+    <section class="controls">
+      <div class="row">
+        <button id="refreshSources">Quellen aktualisieren</button>
+        <button id="openProgramWindow">Program-Fenster öffnen (externer Monitor)</button>
+      </div>
+      <div class="row">
+        <label>Program Quelle</label>
+        <select id="currentSource"></select>
+        <button id="setCurrent">Als Program laden</button>
+      </div>
+      <div class="row">
+        <label>Preview Quelle</label>
+        <select id="nextSource"></select>
+        <button id="setNext">Als Preview laden</button>
+      </div>
+      <div class="row">
+        <button id="cutBtn">CUT</button>
+        <button id="fadeBtn">FADE</button>
+        <label for="fadeDuration">Überblendung (ms)</label>
+        <input id="fadeDuration" type="number" min="100" max="5000" step="100" value="800" />
+      </div>
+      <div class="row">
+        <input id="favoriteName" type="text" placeholder="Favoritenname" />
+        <button id="saveCurrentFavorite">Program-Favorit speichern</button>
+        <button id="saveNextFavorite">Preview-Favorit speichern</button>
+      </div>
+      <div class="row">
+        <select id="favoritesList"></select>
+        <button id="loadFavoriteToCurrent">Favorit -> Program</button>
+        <button id="loadFavoriteToNext">Favorit -> Preview</button>
+        <button id="deleteFavorite">Favorit löschen</button>
+      </div>
+    </section>
+
+    <section class="multiview">
+      <article>
+        <h2>Preview (Next)</h2>
+        <video id="previewVideo" autoplay playsinline muted></video>
+      </article>
+      <article>
+        <h2>Program (Live)</h2>
+        <video id="programVideo" autoplay playsinline muted></video>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
